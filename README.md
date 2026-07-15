@@ -27,8 +27,8 @@ WebP under `.png` / `.jpg` extensions and have been saved with their true extens
 
 | File | Source | Notes |
 |---|---|---|
-| `assets/img/sean-headshot.webp` | `Sean+Headshot.png` | 824×1003, actually WebP |
-| `assets/img/studio-portrait.webp` | `20140301_Trade-151_0124-copy.jpg` | 2200×1400, actually WebP |
+| `assets/img/sean-headshot.webp` | `Sean+Headshot.png` | 824×1003, actually WebP. Photo of Sean. |
+| `assets/img/landscape-lake-mountains.webp` | `20140301_Trade-151_0124-copy.jpg` | 2200×1400, actually WebP. **Despite the Trade 151 filename this is landscape scenery, not a portrait and not a photo of Sean.** Used as decorative home hero (empty `alt`) pending the real hero image. |
 
 These 404 on the CDN and are **not** substituted with stock — a marked placeholder slot
 sits in `about.html` instead:

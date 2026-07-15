@@ -120,7 +120,7 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
 
 .placeholder {
   display: grid; place-content: center; text-align: center;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 3 / 2; max-width: 40rem; margin-inline: auto;
   border: 2px dashed var(--ink-faint);
   border-radius: 6px;
   background: repeating-linear-gradient(45deg, #fafbfc, #fafbfc 10px, #f1f3f5 10px, #f1f3f5 20px);
