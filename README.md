@@ -44,17 +44,30 @@ Owner to supply originals.
 Squarespace boilerplate: the `/cart` link and the LinkedIn href pointing at
 `linkedin.com/company/squarespace`.
 
-## Follow-ups (not done)
+## Deploy
 
-- **Hosting:** GitHub Pages, deploy from repo root. Add a `CNAME` file at deploy time.
-- **DNS (Namecheap):** apex `seanknox.io` → A records `185.199.108.153`, `185.199.109.153`,
-  `185.199.110.153`, `185.199.111.153`; `www` → CNAME `SeanKnox.github.io`. Enforce HTTPS
-  after the cert issues.
-- **Open decision:** canonical is currently `www.seanknox.io`. Confirm apex vs www, redirect
-  the other, then set canonical tags. No canonical tags are set yet, pending this.
-- **Contact:** real LinkedIn / contact URLs to be wired into the footer (`TODO` comment in
-  each page).
+Hosted on GitHub Pages, served from the repo root of `main`.
 
-## Remote
+Canonical host is the **apex**, `https://seanknox.io`. `CNAME` contains `seanknox.io`,
+and every page carries a matching `<link rel="canonical">`. GitHub Pages redirects
+`www` → apex automatically once the `www` CNAME record below is in place.
 
-Intended: `github.com/SeanKnox/seanknox.io`. Not configured or pushed yet.
+### DNS (Namecheap)
+
+| Host | Type | Value |
+|---|---|---|
+| `@` | A | `185.199.108.153` |
+| `@` | A | `185.199.109.153` |
+| `@` | A | `185.199.110.153` |
+| `@` | A | `185.199.111.153` |
+| `www` | CNAME | `SeanKnox.github.io.` |
+
+Remove Squarespace's existing records for `@` and `www` first, or they'll conflict.
+Then in the repo: Settings → Pages → set the custom domain to `seanknox.io`, wait for
+the cert to issue, and tick **Enforce HTTPS**.
+
+## Follow-ups
+
+- **Contact:** real LinkedIn / contact URLs to be wired into the footer (`TODO` comment
+  in each page).
+- **Images:** three originals still missing (see above).
