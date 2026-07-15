@@ -107,31 +107,13 @@ section { padding-block: clamp(3rem, 8vw, 6rem); }
   .hero .wrap { grid-template-columns: 1.05fr 0.95fr; }
 }
 .hero h1 { margin-bottom: 0.6em; }
-.hero__media img, .figure img { border-radius: 6px; }
+.hero__media img { border-radius: 6px; }
 
 .eyebrow {
   font-size: var(--step--1); font-weight: 600; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--ink-faint); margin-bottom: 1rem;
 }
 .lede { font-size: var(--step-1); color: var(--ink-soft); font-family: var(--serif); }
-
-/* ---------- figures / placeholders ---------- */
-.figure figcaption { font-size: var(--step--1); color: var(--ink-faint); margin-top: 0.6rem; }
-
-.placeholder {
-  display: grid; place-content: center; text-align: center;
-  aspect-ratio: 3 / 2; max-width: 40rem; margin-inline: auto;
-  border: 2px dashed var(--ink-faint);
-  border-radius: 6px;
-  background: repeating-linear-gradient(45deg, #fafbfc, #fafbfc 10px, #f1f3f5 10px, #f1f3f5 20px);
-  color: var(--ink-soft);
-  padding: 1.5rem;
-}
-.placeholder__label {
-  font-size: var(--step--1); font-weight: 700; letter-spacing: 0.08em;
-  text-transform: uppercase; margin-bottom: 0.4rem;
-}
-.placeholder__note { font-size: var(--step--1); margin: 0; max-width: 22rem; }
 
 /* ---------- lists ---------- */
 .capabilities { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 1rem; }
