@@ -52,7 +52,31 @@ Canonical host is the **apex**, `https://seanknox.io`. `CNAME` contains `seankno
 and every page carries a matching `<link rel="canonical">`. GitHub Pages redirects
 `www` → apex automatically once the `www` CNAME record below is in place.
 
+### Order of operations
+
+Add the custom domain in **Settings → Pages** *before* pointing DNS at GitHub. Doing it
+the other way round leaves a window where another GitHub user could claim `seanknox.io`
+on their own repo. Optionally verify the domain first (Settings → Pages → custom domain
+verification), which locks the domain to this account permanently.
+
 ### DNS (Namecheap)
+
+Delete Squarespace's existing `@` and `www` records first. Namecheap won't save an ALIAS
+on a host that still has a conflicting A/AAAA/CNAME/URL-redirect record, and leftover
+records on `@` can also stop the GitHub HTTPS cert from issuing.
+
+**Preferred — ALIAS at the apex.** Namecheap supports ALIAS on BasicDNS.
+
+| Host | Type | Value |
+|---|---|---|
+| `@` | ALIAS | `SeanKnox.github.io.` |
+| `www` | CNAME | `SeanKnox.github.io.` |
+
+An ALIAS resolves to whatever IPs GitHub is currently using, so it survives GitHub
+renumbering. Prefer it.
+
+**Fallback — A records**, if ALIAS is unavailable for any reason. Use these *instead of*
+the ALIAS, never alongside it:
 
 | Host | Type | Value |
 |---|---|---|
@@ -62,9 +86,21 @@ and every page carries a matching `<link rel="canonical">`. GitHub Pages redirec
 | `@` | A | `185.199.111.153` |
 | `www` | CNAME | `SeanKnox.github.io.` |
 
-Remove Squarespace's existing records for `@` and `www` first, or they'll conflict.
-Then in the repo: Settings → Pages → set the custom domain to `seanknox.io`, wait for
-the cert to issue, and tick **Enforce HTTPS**.
+Optional IPv6, only with the A-record route (GitHub advises keeping the A records too,
+given uneven IPv6 adoption): AAAA on `@` → `2606:50c0:8000::153`, `2606:50c0:8001::153`,
+`2606:50c0:8002::153`, `2606:50c0:8003::153`.
+
+The `www` CNAME is worth having either way — GitHub recommends it alongside an apex for
+HTTPS, and it's what makes Pages auto-redirect `www` → apex.
+
+Then wait for the cert to issue (up to 24h, usually far less) and tick **Enforce HTTPS**.
+
+Verify with:
+
+```sh
+dig seanknox.io +noall +answer
+dig www.seanknox.io +noall +answer
+```
 
 ## Follow-ups
 
